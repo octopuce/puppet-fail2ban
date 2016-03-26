@@ -421,9 +421,11 @@ class fail2ban (
   }
 
   ### Managed resources
+#  if ! empty($fail2ban::package) {
   package { $fail2ban::package:
     ensure => $fail2ban::manage_package,
     noop   => $fail2ban::noops,
+#  }
   }
 
   service { 'fail2ban':
@@ -498,7 +500,7 @@ class fail2ban (
   }
 
   # The whole fail2ban.configuration directory can be recursively overriden
-  if $fail2ban::source_dir {
+  if !empty($fail2ban::source_dir) {
     file { 'fail2ban.dir':
       ensure  => directory,
       path    => $fail2ban::config_dir,

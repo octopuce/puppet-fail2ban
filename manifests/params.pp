@@ -19,7 +19,7 @@ class fail2ban::params {
   $package = $::operatingsystem ? {
     default => 'fail2ban',
   }
-
+  
   $service = $::operatingsystem ? {
     default => 'fail2ban',
   }
@@ -150,6 +150,6 @@ class fail2ban::params {
   $puppi_helper = 'standard'
   $debug = false
   $audit_only = false
-  $noops = undef
+  $noops = false
 
 }
